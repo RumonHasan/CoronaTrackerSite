@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8">
+        <title>Corona Tracker</title>
+        <meta name ="viewport" content = "width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- stylesheet-->
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="jpstyle.css"><!-- stylesheet for japan Data -->
+        <!-- font awesome link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css" integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA==" crossorigin="anonymous"/>
+        
+        <!-- custom fonts css-->
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+     
+        <!-- main script first-->
+        <script src="corona.js" defer></script>
+
+        <!-- chart.js code -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+        <!--Apexcharts. js -->
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <!-- geo plugin script source code -->
+        <script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+    </head>
+    <body>
+
+        <div class="nav" id="navTop">
+            <a href="#logo-image" class="active-logo"><image src="images/logo.png" class="logo"></image></a>
+            <a href="#title" class="corona">Corona Tracker</a>
+            <a href="#Home" >Home</a>
+            <a href="#Map">Map</a>
+            <a href="#About">About</a>
+            <a href="javascript:void(0);" style="font-size:24px;" class="icon" onclick="myFunction()">&#9776;</a>
+
+                <script>// responsive nav bar mini script 
+                    function myFunction() {
+                    var x = document.getElementById("navTop");
+                    if (x.className === "nav") {
+                        x.className += " responsive";
+                    } else {
+                        x.className = "nav";
+                    }
+                    }
+                </script>
+        </div>
+
+        <!-- Quick Facts cards section-->
+        <section class="card-section">
+            <div class="card-container">
+                <div class="quick-stats">
+                    <h1>Quick Facts: Global</h1>
+                </div>
+
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header total-confirmed">
+                        </div>
+                        <div class="card-body">
+                            <h1 class="total-cases-number total-header">Total Confirmed:</h1>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header total-deceased">
+                        </div>
+                        <div class="card-body">
+                            <h1 class="total-death-number total-header">Total Deceased:</h1>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header total-recovered">
+                        </div>
+                        <div class="card-body">
+                            <h1 class="total-recovered-number total-header">Total Recovered:</h1>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header total-critical">
+                        </div>
+                        <div class="card-body">
+                            <h1 class="total-critical-number total-header">Total Critical:</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- corona chart section-->
+        <section class="chart-container">
+            <div class ="chart-header">
+                <h1 class ="chart-title">
+                    Graphical Stats
+                </h1>
+            </div>
+                <div class ="corona-chart" id="corona-chart">
+                </div>
+        </section>
+
+        <!-- Japan Corona Details section-->
+        <section class ="japan-data-container">
+            <div class ="jp-header">
+                <h1 class ="jp-title">
+                    Covid19 Stats: Japan
+                </h1>
+            </div>
+            <div class ="stats">
+                <div class ="latest-report">
+
+                    <div class="prefecture"><!-- Prefecture name block -->
+                        <div class="prefecture-title">Loading...</div>
+                        <div class="change-prefecture"><!-- change prefecture block to change the prefecture list -->
+                            <h1>Change</h1>
+                        </div>
+                        <div class="search-pref hide">
+                            <div class ="search-pref-box">
+                                <input type="text" id="search-pref-input" name= "" placeholder="Search By Prefecture...">
+                                <img src ="images/close.svg" class ="close" alt="">
+                            </div>
+                            <div class="pref-list">
+                                <!-- JS dynamic addition -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pref-total">
+                        <div class="title">Total:</div>
+                        <div class="value" id="pref-total-value">0</div>
+                    </div>
+                    <div class="pref-recovered">
+                        <div class="title">Recovered:</div>
+                        <div class="value" id="pref-total-recovered">0</div>
+                    </div>
+                    <div class="pref-deaths">
+                        <div class="title">Deaths:</div>
+                        <div class="value" id="pref-total-deaths">0</div>
+                    </div>
+                    <div class="pref-hospital">
+                        <div class="title">Hospitalized:</div>
+                        <div class="value" id="pref-total-hospital">0</div>
+                    </div>
+                    <div class="pref-critical">
+                        <div class="title">Critical:</div>
+                        <div class="value" id="pref-total-critical">0</div>
+                    </div>
+                    <div class="pref-pop">
+                        <div class="title">Population:</div>
+                        <div class="value" id="pref-total-population">0</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- title and search bar section -->
+        <section class="search-section">
+            <div class="table-title-div">
+                <p class="table-title">World COVID-19 Statistics:</p>
+            </div>
+
+        <!-- corona search box -->
+            <div class="search-box">
+                <input class="search-txt" type="text" name="" placeholder="Enter Country Name:">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Select options based on continents-->
+        <div class ="select-container">
+            <select class="continent-select" id="continent-option-select"></select>
+        </div>
+
+        <!-- Data Table section-->
+        <section class="table-section">
+            <div class ="table-container"> 
+
+                <!-- corona table -->
+                <table class="corona-table">
+                    <thead>
+                        <tr class="row-header">
+                            <th class="number-list">#</th>
+                            <th class="country-name">Country</th>
+                            <th class="total-cases">Total Cases</th>
+                            <th class="today-cases">Today Cases</th>
+                            <th class="deaths">Deaths</th>
+                            <th class="today-deaths">Today Deaths</th>
+                            <th class="active-cases">Active Cases</th>
+                            <th class="recovered">Recovered</th>
+                            <th class="critical">Critical</th>
+                            <th class="total-tests">Total Tests</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </body>
+</html>

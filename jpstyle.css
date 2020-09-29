@@ -1,0 +1,265 @@
+*{
+    margin:0 auto;
+    padding: 0;
+}
+.hide{
+    display: none;
+  }
+  .fadeIn{
+    animation: fade 0.5s ease-in-out;
+  }
+  .fadeOut{
+      animation: fade 0.5s ease-out;
+  }
+  @keyframes fade{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+  }
+:root{
+    /* Menu colors */
+    --bgMenu: #333;
+    --aTag: #f2f2f2;
+    --hoverMenu: #555;
+    --logoBg: #232323;
+    /* table colors */
+    --thead : #212121;
+    --totalCases: #00b300;
+    --countries: #f2f2f2;
+    --deaths: #e60000;
+    --active: #ffea00;
+    --recovered: #0080ff;
+    --critical: #ff4000;
+    --totalTests: #ffae1a;
+    --todayCases: #00cc00;
+    --todayDeaths: #ff5a77;
+    /* search box colors */
+    --search-box: #2f3640;
+    --search-btn: #e84118;
+    --search-bg: #2f3640;
+
+    /* card design colors */
+    --card-bg: #fff;
+    --card-header: #323232;
+    --card-total: #07da63;
+    --card-death: #ed4d4d;
+    --card-recovered: #2a9df4;
+    --card-critical: #effd5f;
+
+
+}
+
+.japan-data-container{
+    max-width: 1500px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 200px;
+    border: 1px solid white;
+    
+}
+.jp-title{
+    color:white;
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    font-size: 30px;
+}
+
+.stats{
+    width: 100%;
+}
+
+/* latest report headers and total values */
+.latest-report{
+    display:grid;
+    grid-template-columns: repeat(4, 25%);
+    align-items: center;
+
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 50px;
+
+    color: #FFF;
+}
+
+.change-prefecture h1{
+    font-size: 20px;
+}
+
+.change-prefecture{
+    cursor: pointer;
+}
+
+.prefecture-title{
+    font-size: 50px;
+    color:var(--card-recovered);
+    padding-right: 30px;
+}
+/* headers design */
+.pref-total,
+.pref-recovered,
+.pref-deaths{
+    height: 100px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 30px;
+}
+
+.title{
+    font-size: 35px;
+    padding: 20px;
+}
+.pref-total .value{
+    font-size: 35px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+.pref-recovered .value{
+    font-size: 35px;
+    font-weight: bold;
+    color:var(--card-total);
+    padding-bottom: 20px;
+}
+.pref-deaths .value{
+    font-size: 35px;
+    font-weight: bold;
+    color: var(--card-death);
+    padding-bottom: 20px;
+}
+
+.pref-hospital .value,
+.pref-critical .value,
+.pref-pop .value{
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 20px;
+}
+
+/* search box designs */
+.search-pref{
+    position:relative;
+    top:10px;
+}
+
+#search-pref-input{
+    width: 360px;
+    height: 25px;
+
+    border: none;
+    text-decoration: none;
+    background-color: transparent;
+    color: #FFF;
+    outline: none !important;
+    padding-left: 15px;
+
+    font-size: 1.1em;
+}
+
+.search-pref-box{
+        position: absolute;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    
+        width: 400px;
+        height: 30px;
+    
+        background-color: #111;
+    
+        z-index: 1;
+
+}
+
+
+
+.search-pref-box img{
+    width: 20px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.pref-list{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 30px;
+    width: 400px;
+    height: 300px;
+
+    background-color: #111;
+    opacity: 0.7;
+    overflow-y: scroll;
+}
+
+.pref-list ul{
+    width: 100%;
+}
+
+.pref-list ul li{
+    cursor:pointer;
+    list-style: none;
+    padding: 10px;
+    margin-left: 0px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.pref-list ul li:hover{
+    border-left: 1px solid #fff;
+}
+
+/* SCROLL BAR */
+.pref-list::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  .pref-list::-webkit-scrollbar-track {
+    background: #111;
+  }
+  
+  /* Handle */
+  .pref-list::-webkit-scrollbar-thumb {
+    background: #F1F1F1;
+  }
+  
+  /* Handle on hover */
+  .pref-list::-webkit-scrollbar-thumb:hover {
+    background: #FFF;
+  }
+
+/* Media queries */
+@media screen and (max-width: 700px){
+    .latest-report{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pref-deaths{
+        margin-left: -20px;
+        padding-top: 30px;
+    }
+    .pref-recovered{
+        margin-left: -20px;
+        padding-top: 30px;
+    }
+    .pref-total{
+        margin-left: -20px;
+        padding-top: 30px;
+    }
+    .pref-hospital,
+.pref-critical,
+.pref-pop {
+    margin-left: -20px;
+    padding-top: 30px;
+}
+}
+
+
